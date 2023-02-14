@@ -1,0 +1,200 @@
+{% extends 'partner/layout.html' %}
+{% load static %}
+{% block title %} Add New Property{% endblock %}
+
+
+{% block body %}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0">Add New Property</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Property</a></li>
+                            <li class="breadcrumb-item active">Add New Property</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <form id="createproduct-form" action="/partner/add-new-room/{{property.slug}}/?redirectUrl={{request.get_full_path}}"
+            method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label" for="product-title-input">Title</label>
+
+                                <input type="text" class="form-control" id="product-title-input" value="" name="name"
+                                    placeholder="Enter room title or number" required>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <!-- end card -->
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Gallery</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <h5 class="fs-14 mb-1">Room Thumbnail Image</h5>
+                                <p class="text-muted">Add property main Image.</p>
+                                <div class="text-center">
+                                    <input class="form-control" value="" name="image" type="file" accept=".jpg, .png"
+                                        required>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- end card -->
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">General Details</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="product-price-input">Room Type <span
+                                                class="text-danger">*</span></label>
+                                            <select name="roomType" id="" class="form-select">
+                                                <option value="AC">AC</option>
+                                                <option value="Non AC">Non AC</option>
+                                            </select>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="product-price-input">Price Per Night<span
+                                                class="text-danger">*</span></label>
+                                        <div class="input-group has-validation mb-3">
+                                            <span class="input-group-text" id="product-price-addon">&#x20B9;</span>
+                                            <input type="text" class="form-control" id="product-price-input"
+                                                placeholder="Enter price" aria-label="Price" name="price"
+                                                aria-describedby="product-price-addon" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="product-price-input">Adult<span
+                                                class="text-danger">*</span></label>
+                                        <div class="input-group has-validation mb-3">
+                                            <input type="number" class="form-control" id="product-price-input"
+                                                placeholder="Enter price" aria-label="Price" name="adults"
+                                                aria-describedby="product-price-addon" required value="2">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="product-price-input">Childrens<span
+                                                class="text-danger">*</span></label>
+                                        <div class="input-group has-validation mb-3">
+                                            <input type="number" class="form-control" id="product-price-input"
+                                                placeholder="Enter price" aria-label="Price" name="childrens"
+                                                aria-describedby="product-price-addon" required value="1">
+                                        </div>
+
+                                        <input type="text" name="redirectUrl" value="{{redirectUrl}}" hidden id="">
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+                        </div>
+                        <!-- end card body -->
+                    </div>
+
+                </div>
+                <!-- end col -->
+
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Status</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="choices-publish-status-input" class="form-label">Select Status</label>
+
+                                <select class="form-select" id="choices-publish-status-input" data-choices
+                                    data-choices-search-false name="status">
+                                    <option value="Available" selected>Available</option>
+                                    <option value="Unavailable" >Unavailable</option>
+
+                                </select>
+                            </div>
+
+
+                        </div>
+                        <!-- end card body -->
+                    </div>
+                    <!-- end card -->
+
+
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Select Facilities</h5>
+                        </div>
+                        <div class="card-body">
+                            <select class="js-example-basic-multiple" name="facilities[]" multiple="multiple">
+                                {% for i in roomFeatures %}
+                                <option value="{{i.id}}" selected>{{i.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <!-- end card body -->
+                    </div>
+                    <!-- end card -->
+
+
+
+                    <div class="card">
+                        <div class="card-body">
+                            <button class="btn btn-success" style="width: 100px;">Submit</button>
+                            <button class="btn btn-warning mx-2" style="width: 100px;">Reset</button>
+                            <a href="{{redirectUrl}}" class="btn btn-danger" style="width: 100px;">Cancel</a>
+                        </div>
+                    </div>
+                    <!-- end card -->
+
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+
+        </form>
+
+    </div>
+    <!-- container-fluid -->
+</div>
+<!-- End Page-content -->
+
+{% endblock %}

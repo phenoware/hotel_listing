@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'partner',
     'website',
     'customers',
+    'vendor',
 ]
 
 MIDDLEWARE = [
@@ -78,20 +79,13 @@ WSGI_APPLICATION = 'hotelsListingProj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'NAME': 'hotelsListing',
-       'USER': 'vinayak2926',
-       'PASSWORD': 'yeld4Zx1EhqY',
-       'HOST': 'ep-rough-scene-987216.ap-southeast-1.aws.neon.tech',
+       'NAME': 'hotelListingDb',
+       'HOST': 'hotelslisting.cm8osvjesfbb.ap-south-1.rds.amazonaws.com',
+       'USER': 'hotelAdmin',
+       'PASSWORD': 'hotel123Listing',
        'PORT': '5432',
    }
 }
@@ -132,21 +126,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # 'data' is my media folder
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'mail.ptpl.com'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
-EMAIL_PORT = 25
-EMAIL_HOST_USER = 'info@ptpl.com'
-EMAIL_HOST_PASSWORD = 'ptpl123'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '52pattimall@gmail.com'
+EMAIL_HOST_PASSWORD = 'nznvqqxcbmojhmkb'
 
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

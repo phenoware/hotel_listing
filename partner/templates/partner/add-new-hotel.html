@@ -1,0 +1,198 @@
+{% extends 'partner/layout.html' %}
+{% load static %}
+{% block title %} Add New Property{% endblock %}
+
+
+{% block body %}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                    <h4 class="mb-sm-0">Add New Property</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Property</a></li>
+                            <li class="breadcrumb-item active">Add New Property</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <form id="createproduct-form" action="/partner/add-new-hotel/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label" for="product-title-input">Property Title</label>
+
+                                <input type="text" class="form-control" id="product-title-input" value="" name="name"
+                                    placeholder="Enter property title" required>
+
+                            </div>
+                            <div class="mb-3">
+                                <label>Property Description/ Overview</label>
+                                <textarea name="overview" id="" cols="30" rows="10"
+                                    class="form-control" required></textarea>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="mb-3 col-12">
+                                    <label class="form-label" for="product-title-input">Address <span
+                                            class="text-danger"> *</span></label>
+
+                                    <input type="text" class="form-control" id="product-title-input" value=""
+                                        name="address" placeholder="Enter address" required>
+
+                                </div>
+
+                                <div class="mb-3 col-6">
+                                    <label class="form-label" for="product-title-input">City <span class="text-danger">
+                                            *</span></label>
+
+                                    <input type="text" class="form-control" id="product-title-input" value=""
+                                        name="city" placeholder="Enter city name" required>
+
+                                </div>
+
+                                <div class="mb-3 col-6">
+                                    <label class="form-label" for="product-title-input">Pincode <span
+                                            class="text-danger"> *</span></label>
+
+                                    <input type="text" maxlength="6" class="form-control" id="product-title-input"
+                                        value="" name="pincode" placeholder="Enter pincode" required>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end card -->
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Gallery</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <h5 class="fs-14 mb-1">Property Thumbnail Image</h5>
+                                <p class="text-muted">Add property main Image.</p>
+                                <div class="text-center">
+                                    <input class="form-control" value="" name="image"
+                                                 type="file" accept=".jpg" required>
+                                  
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                                <h5 class="fs-14 mb-1">Extra Property Images</h5>
+                                <p class="text-muted">Add Product Gallery Images.</p>
+
+                                <div class="">
+                                    <div class="fallback">
+                                        <input name="images" class="form-control" type="file" multiple="multiple" accept="image/png, image/jpeg">
+                                    </div>
+                                </div>
+
+                                
+                                <!-- end dropzon-preview -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end card -->
+
+
+                </div>
+                <!-- end col -->
+
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Property Type</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="choices-publish-status-input" class="form-label">Select Type</label>
+
+                                <select class="form-select" id="choices-publish-status-input" data-choices
+                                    data-choices-search-false name="propertyType">
+                                    <option value="Hotel & Restaurant">Hotel & Restaurant</option>
+                                    <option value="Resort" selected>Resort</option>
+                                    <option value="Both">Both</option>
+                                </select>
+                            </div>
+
+
+                        </div>
+                        <!-- end card body -->
+                    </div>
+                    <!-- end card -->
+
+
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Select Facilities</h5>
+                        </div>
+                        <div class="card-body">
+                            <select class="js-example-basic-multiple" name="facilities[]" multiple="multiple" > 
+                                {% for i in facilities %}
+                                <option value="{{i.id}}" selected>{{i.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <!-- end card body -->
+                    </div>
+                    <!-- end card -->
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">General Details</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label" for="product-price-input">Starting Price <span
+                                        class="text-danger">*</span></label>
+                                <div class="input-group has-validation mb-3">
+                                    <span class="input-group-text" id="product-price-addon">&#x20B9;</span>
+                                    <input type="text" class="form-control" id="product-price-input"
+                                        placeholder="Enter price" aria-label="Price" name="priceMin"
+                                        aria-describedby="product-price-addon" required>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!-- end card body -->
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <button class="btn btn-success" style="width: 100px;">Submit</button>
+                            <button class="btn btn-warning mx-2" style="width: 100px;">Reset</button>
+                            <a href="/partner/hotels/" class="btn btn-danger" style="width: 100px;">Cancel</a>
+                        </div>
+                    </div>
+                    <!-- end card -->
+
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+
+        </form>
+
+    </div>
+    <!-- container-fluid -->
+</div>
+<!-- End Page-content -->
+
+{% endblock %}

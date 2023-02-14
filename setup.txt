@@ -40,3 +40,10 @@ server {
         proxy_pass http://unix:/run/gunicorn.sock;
     }
 }
+
+
+#Database 
+DB Instance Identifier - hotelsListing
+User Name- hotelAdmin
+Password - hotel123Listing
+DB Name - hotelListingDb
