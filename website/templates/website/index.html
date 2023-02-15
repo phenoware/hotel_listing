@@ -241,22 +241,22 @@
         <div data-anim-child="slide-up delay-1" class="row y-gap-20 justify-left text-left is-in-view">
             <div class="col-auto">
                 <div class="sectionTitle -md">
-                    <h2 class="sectionTitle__title">Sponsored</h2>
+                    <h2 class="sectionTitle__title">Recommended</h2>
                     <p class=" sectionTitle__text mt-5 sm:mt-0">These popular destinations have a lot to offer</p>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-6 col-md-3" style="margin-top: 20px;">
-                <div class="" style="width: 250px; margin-right: 10px;">
-
-                    <a href="/hotel-details/" class="hotelsCard -type-1 ">
+        <div class="row" style="">
+            {% for i in property %}
+            <div class="col-6 col-md-3" style="margin-top: 40px;">
+                <div class="" >
+                    <a href="/hotel-details/{{i.slug}}" class="hotelsCard -type-1 ">
                         <div class="hotelsCard__image">
 
                             <div class="cardImage ratio ratio-1:1">
                                 <div class="cardImage__content">
 
-                                    <img class="rounded-4 col-12 js-lazy loaded" src="/static/website/img/hotels/1.png" alt="image"
+                                    <img class="rounded-4 col-12 js-lazy loaded" src="/media/{{i.image}}"  alt="image"
                                         data-ll-status="loaded">
 
 
@@ -273,7 +273,7 @@
                                 <div class="cardImage__leftBadge">
                                     <div
                                         class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
-                                        Breakfast included
+                                        Featured
                                     </div>
                                 </div>
 
@@ -283,20 +283,20 @@
 
                         <div class="hotelsCard__content mt-10">
                             <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                                <span>The Montcalm At Brewery London City</span>
+                                <span>{{i.name}}</span>
                             </h4>
 
-                            <p class="text-light-1 lh-14 text-14 mt-5">Westminster Borough, London</p>
+                            <p class="text-light-1 lh-14 text-14 mt-5">{{i.address}}</p>
 
-                            <div class="d-flex items-center mt-20">
+                            <!-- <div class="d-flex items-center mt-20">
                                 <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
                                 <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
                                 <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                            </div>
+                            </div> -->
 
                             <div class="mt-5">
                                 <div class="fw-500">
-                                    Starting from <span class="text-blue-1">US$72</span>
+                                    Starting from <span class="text-blue-1">&#x20B9;{{i.priceMin}}</span>
                                 </div>
                             </div>
                         </div>
@@ -304,16 +304,18 @@
 
                 </div>
             </div>
-            <div class="col-6 col-md-3" style="margin-top: 20px;">
-                <div class="" style="width: 250px; margin-right: 10px;">
+            {% endfor %}
 
-                    <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
+            {% for i in property %}
+            <div class="col-6 col-md-3" style="margin-top: 40px;">
+                <div class="">
+                    <a href="/hotel-details/{{i.slug}}" class="hotelsCard -type-1 ">
                         <div class="hotelsCard__image">
 
                             <div class="cardImage ratio ratio-1:1">
                                 <div class="cardImage__content">
 
-                                    <img class="rounded-4 col-12 js-lazy loaded" src="/static/website/img/hotels/1.png" alt="image"
+                                    <img class="rounded-4 col-12 js-lazy loaded" src="/media/{{i.image}}" alt="image"
                                         data-ll-status="loaded">
 
 
@@ -330,7 +332,7 @@
                                 <div class="cardImage__leftBadge">
                                     <div
                                         class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
-                                        Breakfast included
+                                        Featured
                                     </div>
                                 </div>
 
@@ -340,20 +342,20 @@
 
                         <div class="hotelsCard__content mt-10">
                             <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                                <span>The Montcalm At Brewery London City</span>
+                                <span>{{i.name}}</span>
                             </h4>
 
-                            <p class="text-light-1 lh-14 text-14 mt-5">Westminster Borough, London</p>
+                            <p class="text-light-1 lh-14 text-14 mt-5">{{i.address}}</p>
 
-                            <div class="d-flex items-center mt-20">
+                            <!-- <div class="d-flex items-center mt-20">
                                 <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
                                 <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
                                 <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                            </div>
+                            </div> -->
 
                             <div class="mt-5">
                                 <div class="fw-500">
-                                    Starting from <span class="text-blue-1">US$72</span>
+                                    Starting from <span class="text-blue-1">&#x20B9;{{i.priceMin}}</span>
                                 </div>
                             </div>
                         </div>
@@ -361,122 +363,10 @@
 
                 </div>
             </div>
-
-            <div class="col-6 col-md-3" style="margin-top: 20px;">
-                <div class="" style="width: 250px; margin-right: 10px;">
-
-                    <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                        <div class="hotelsCard__image">
-
-                            <div class="cardImage ratio ratio-1:1">
-                                <div class="cardImage__content">
-
-                                    <img class="rounded-4 col-12 js-lazy loaded" src="/static/website/img/hotels/1.png" alt="image"
-                                        data-ll-status="loaded">
+            {% endfor %}
 
 
-                                </div>
-
-                                <div class="cardImage__wishlist">
-                                    <button class="button -blue-1 bg-white size-30 rounded-full shadow-2"
-                                        fdprocessedid="x5q9z">
-                                        <i class="icon-heart text-12"></i>
-                                    </button>
-                                </div>
-
-
-                                <div class="cardImage__leftBadge">
-                                    <div
-                                        class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
-                                        Breakfast included
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="hotelsCard__content mt-10">
-                            <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                                <span>The Montcalm At Brewery London City</span>
-                            </h4>
-
-                            <p class="text-light-1 lh-14 text-14 mt-5">Westminster Borough, London</p>
-
-                            <div class="d-flex items-center mt-20">
-                                <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                                <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                                <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                            </div>
-
-                            <div class="mt-5">
-                                <div class="fw-500">
-                                    Starting from <span class="text-blue-1">US$72</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3" style="margin-top: 20px;">
-                <div class="" style="width: 250px; margin-right: 10px;">
-
-                    <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                        <div class="hotelsCard__image">
-
-                            <div class="cardImage ratio ratio-1:1">
-                                <div class="cardImage__content">
-
-                                    <img class="rounded-4 col-12 js-lazy loaded" src="/static/website/img/hotels/1.png" alt="image"
-                                        data-ll-status="loaded">
-
-
-                                </div>
-
-                                <div class="cardImage__wishlist">
-                                    <button class="button -blue-1 bg-white size-30 rounded-full shadow-2"
-                                        fdprocessedid="x5q9z">
-                                        <i class="icon-heart text-12"></i>
-                                    </button>
-                                </div>
-
-
-                                <div class="cardImage__leftBadge">
-                                    <div
-                                        class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
-                                        Breakfast included
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="hotelsCard__content mt-10">
-                            <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                                <span>The Montcalm At Brewery London City</span>
-                            </h4>
-
-                            <p class="text-light-1 lh-14 text-14 mt-5">Westminster Borough, London</p>
-
-                            <div class="d-flex items-center mt-20">
-                                <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                                <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                                <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                            </div>
-
-                            <div class="mt-5">
-                                <div class="fw-500">
-                                    Starting from <span class="text-blue-1">US$72</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
+            
         </div>
         
     </div>
@@ -539,7 +429,7 @@
 
 
 
-<section class="layout-pt-md">
+<section class="layout-pt-lg">
     <div data-anim-wrap="" class="container animated">
         <div data-anim-child="slide-up delay-1" class="row y-gap-20 justify-left text-left is-in-view">
             <div class="col-auto">
@@ -744,44 +634,45 @@
 
 
 
-<section class="layout-pt-md layout-pb-md" style="margin-top: 30px;">
+<section class="layout-pt-lg" style="">
     <div data-anim="slide-up delay-1" class="container is-in-view">
         <div data-anim-child="slide-up delay-1" class="row y-gap-20 justify-left text-left is-in-view">
             <div class="col-auto">
                 <div class="sectionTitle -md">
-                    <h2 class="sectionTitle__title">Destinations Travellers Love</h2>
+                    <h2 class="sectionTitle__title">Most Populer Resorts</h2>
                     <p class=" sectionTitle__text mt-5 sm:mt-0">These popular destinations have a lot to offer</p>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-6 col-md-3" style="margin-top: 20px;">
-                <div class="" style="width: 250px; margin-right: 10px;">
+            {% for i in rooms %}
+            <div class="col-6 col-md-3" style="margin-top: 40px;">
+                <div class="" style="">
 
-                    <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
+                    <a href="/hotel-details/{{i.property.slug}}" class="hotelsCard -type-1 ">
                         <div class="hotelsCard__image">
 
                             <div class="cardImage ratio ratio-1:1">
                                 <div class="cardImage__content">
 
-                                    <img class="rounded-4 col-12 js-lazy loaded" src="/static/website/img/hotels/1.png" alt="image"
+                                    <img class="rounded-4 col-12 js-lazy loaded" src="/media/{{i.image}}" alt="image"
                                         data-ll-status="loaded">
 
 
                                 </div>
 
-                                <div class="cardImage__wishlist">
+                                <!-- <div class="cardImage__wishlist">
                                     <button class="button -blue-1 bg-white size-30 rounded-full shadow-2"
                                         fdprocessedid="x5q9z">
                                         <i class="icon-heart text-12"></i>
                                     </button>
-                                </div>
+                                </div> -->
 
 
                                 <div class="cardImage__leftBadge">
                                     <div
                                         class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
-                                        Breakfast included
+                                        Most Populer
                                     </div>
                                 </div>
 
@@ -791,20 +682,20 @@
 
                         <div class="hotelsCard__content mt-10">
                             <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                                <span>The Montcalm At Brewery London City</span>
+                                <span>{{i.name}}</span>
                             </h4>
 
-                            <p class="text-light-1 lh-14 text-14 mt-5">Westminster Borough, London</p>
+                            <p class="text-light-1 lh-14 text-14 mt-5">{{i.property.address}}</p>
 
-                            <div class="d-flex items-center mt-20">
+                            <!-- <div class="d-flex items-center mt-20">
                                 <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
                                 <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
                                 <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                            </div>
+                            </div> -->
 
                             <div class="mt-5">
                                 <div class="fw-500">
-                                    Starting from <span class="text-blue-1">US$72</span>
+                                    Starting from <span class="text-blue-1">&#x20B9; {{i.property.priceMin}}</span>
                                 </div>
                             </div>
                         </div>
@@ -812,409 +703,10 @@
 
                 </div>
             </div>
-            <div class="col-6 col-md-3" style="margin-top: 20px;">
-                <div class="" style="width: 250px; margin-right: 10px;">
+            {% endfor %}
+            
 
-                    <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                        <div class="hotelsCard__image">
 
-                            <div class="cardImage ratio ratio-1:1">
-                                <div class="cardImage__content">
-
-                                    <img class="rounded-4 col-12 js-lazy loaded" src="/static/website/img/hotels/1.png" alt="image"
-                                        data-ll-status="loaded">
-
-
-                                </div>
-
-                                <div class="cardImage__wishlist">
-                                    <button class="button -blue-1 bg-white size-30 rounded-full shadow-2"
-                                        fdprocessedid="x5q9z">
-                                        <i class="icon-heart text-12"></i>
-                                    </button>
-                                </div>
-
-
-                                <div class="cardImage__leftBadge">
-                                    <div
-                                        class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
-                                        Breakfast included
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="hotelsCard__content mt-10">
-                            <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                                <span>The Montcalm At Brewery London City</span>
-                            </h4>
-
-                            <p class="text-light-1 lh-14 text-14 mt-5">Westminster Borough, London</p>
-
-                            <div class="d-flex items-center mt-20">
-                                <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                                <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                                <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                            </div>
-
-                            <div class="mt-5">
-                                <div class="fw-500">
-                                    Starting from <span class="text-blue-1">US$72</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3" style="margin-top: 20px;">
-                <div class="" style="width: 250px; margin-right: 10px;">
-
-                    <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                        <div class="hotelsCard__image">
-
-                            <div class="cardImage ratio ratio-1:1">
-                                <div class="cardImage__content">
-
-                                    <img class="rounded-4 col-12 js-lazy loaded" src="/static/website/img/hotels/1.png" alt="image"
-                                        data-ll-status="loaded">
-
-
-                                </div>
-
-                                <div class="cardImage__wishlist">
-                                    <button class="button -blue-1 bg-white size-30 rounded-full shadow-2"
-                                        fdprocessedid="x5q9z">
-                                        <i class="icon-heart text-12"></i>
-                                    </button>
-                                </div>
-
-
-                                <div class="cardImage__leftBadge">
-                                    <div
-                                        class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
-                                        Breakfast included
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="hotelsCard__content mt-10">
-                            <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                                <span>The Montcalm At Brewery London City</span>
-                            </h4>
-
-                            <p class="text-light-1 lh-14 text-14 mt-5">Westminster Borough, London</p>
-
-                            <div class="d-flex items-center mt-20">
-                                <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                                <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                                <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                            </div>
-
-                            <div class="mt-5">
-                                <div class="fw-500">
-                                    Starting from <span class="text-blue-1">US$72</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3" style="margin-top: 20px;">
-                <div class="" style="width: 250px; margin-right: 10px;">
-
-                    <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                        <div class="hotelsCard__image">
-
-                            <div class="cardImage ratio ratio-1:1">
-                                <div class="cardImage__content">
-
-                                    <img class="rounded-4 col-12 js-lazy loaded" src="/static/website/img/hotels/1.png" alt="image"
-                                        data-ll-status="loaded">
-
-
-                                </div>
-
-                                <div class="cardImage__wishlist">
-                                    <button class="button -blue-1 bg-white size-30 rounded-full shadow-2"
-                                        fdprocessedid="x5q9z">
-                                        <i class="icon-heart text-12"></i>
-                                    </button>
-                                </div>
-
-
-                                <div class="cardImage__leftBadge">
-                                    <div
-                                        class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
-                                        Breakfast included
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="hotelsCard__content mt-10">
-                            <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                                <span>The Montcalm At Brewery London City</span>
-                            </h4>
-
-                            <p class="text-light-1 lh-14 text-14 mt-5">Westminster Borough, London</p>
-
-                            <div class="d-flex items-center mt-20">
-                                <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                                <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                                <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                            </div>
-
-                            <div class="mt-5">
-                                <div class="fw-500">
-                                    Starting from <span class="text-blue-1">US$72</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-            <div class="col-6 col-md-3" style="margin-top: 20px;">
-                <div class="" style="width: 250px; margin-right: 10px;">
-
-                    <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                        <div class="hotelsCard__image">
-
-                            <div class="cardImage ratio ratio-1:1">
-                                <div class="cardImage__content">
-
-                                    <img class="rounded-4 col-12 js-lazy loaded" src="/static/website/img/hotels/1.png" alt="image"
-                                        data-ll-status="loaded">
-
-
-                                </div>
-
-                                <div class="cardImage__wishlist">
-                                    <button class="button -blue-1 bg-white size-30 rounded-full shadow-2"
-                                        fdprocessedid="x5q9z">
-                                        <i class="icon-heart text-12"></i>
-                                    </button>
-                                </div>
-
-
-                                <div class="cardImage__leftBadge">
-                                    <div
-                                        class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
-                                        Breakfast included
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="hotelsCard__content mt-10">
-                            <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                                <span>The Montcalm At Brewery London City</span>
-                            </h4>
-
-                            <p class="text-light-1 lh-14 text-14 mt-5">Westminster Borough, London</p>
-
-                            <div class="d-flex items-center mt-20">
-                                <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                                <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                                <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                            </div>
-
-                            <div class="mt-5">
-                                <div class="fw-500">
-                                    Starting from <span class="text-blue-1">US$72</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-            <div class="col-6 col-md-3" style="margin-top: 20px;">
-                <div class="" style="width: 250px; margin-right: 10px;">
-
-                    <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                        <div class="hotelsCard__image">
-
-                            <div class="cardImage ratio ratio-1:1">
-                                <div class="cardImage__content">
-
-                                    <img class="rounded-4 col-12 js-lazy loaded" src="/static/website/img/hotels/1.png" alt="image"
-                                        data-ll-status="loaded">
-
-
-                                </div>
-
-                                <div class="cardImage__wishlist">
-                                    <button class="button -blue-1 bg-white size-30 rounded-full shadow-2"
-                                        fdprocessedid="x5q9z">
-                                        <i class="icon-heart text-12"></i>
-                                    </button>
-                                </div>
-
-
-                                <div class="cardImage__leftBadge">
-                                    <div
-                                        class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
-                                        Breakfast included
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="hotelsCard__content mt-10">
-                            <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                                <span>The Montcalm At Brewery London City</span>
-                            </h4>
-
-                            <p class="text-light-1 lh-14 text-14 mt-5">Westminster Borough, London</p>
-
-                            <div class="d-flex items-center mt-20">
-                                <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                                <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                                <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                            </div>
-
-                            <div class="mt-5">
-                                <div class="fw-500">
-                                    Starting from <span class="text-blue-1">US$72</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3" style="margin-top: 20px;">
-                <div class="" style="width: 250px; margin-right: 10px;">
-
-                    <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                        <div class="hotelsCard__image">
-
-                            <div class="cardImage ratio ratio-1:1">
-                                <div class="cardImage__content">
-
-                                    <img class="rounded-4 col-12 js-lazy loaded" src="/static/website/img/hotels/1.png" alt="image"
-                                        data-ll-status="loaded">
-
-
-                                </div>
-
-                                <div class="cardImage__wishlist">
-                                    <button class="button -blue-1 bg-white size-30 rounded-full shadow-2"
-                                        fdprocessedid="x5q9z">
-                                        <i class="icon-heart text-12"></i>
-                                    </button>
-                                </div>
-
-
-                                <div class="cardImage__leftBadge">
-                                    <div
-                                        class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
-                                        Breakfast included
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="hotelsCard__content mt-10">
-                            <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                                <span>The Montcalm At Brewery London City</span>
-                            </h4>
-
-                            <p class="text-light-1 lh-14 text-14 mt-5">Westminster Borough, London</p>
-
-                            <div class="d-flex items-center mt-20">
-                                <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                                <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                                <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                            </div>
-
-                            <div class="mt-5">
-                                <div class="fw-500">
-                                    Starting from <span class="text-blue-1">US$72</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-
-            <div class="col-6 col-md-3" style="margin-top: 20px;">
-                <div class="" style="width: 250px; margin-right: 10px;">
-
-                    <a href="hotel-single-1.html" class="hotelsCard -type-1 ">
-                        <div class="hotelsCard__image">
-
-                            <div class="cardImage ratio ratio-1:1">
-                                <div class="cardImage__content">
-
-                                    <img class="rounded-4 col-12 js-lazy loaded" src="/static/website/img/hotels/1.png" alt="image"
-                                        data-ll-status="loaded">
-
-
-                                </div>
-
-                                <div class="cardImage__wishlist">
-                                    <button class="button -blue-1 bg-white size-30 rounded-full shadow-2"
-                                        fdprocessedid="x5q9z">
-                                        <i class="icon-heart text-12"></i>
-                                    </button>
-                                </div>
-
-
-                                <div class="cardImage__leftBadge">
-                                    <div
-                                        class="py-5 px-15 rounded-right-4 text-12 lh-16 fw-500 uppercase bg-dark-1 text-white">
-                                        Breakfast included
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="hotelsCard__content mt-10">
-                            <h4 class="hotelsCard__title text-dark-1 text-18 lh-16 fw-500">
-                                <span>The Montcalm At Brewery London City</span>
-                            </h4>
-
-                            <p class="text-light-1 lh-14 text-14 mt-5">Westminster Borough, London</p>
-
-                            <div class="d-flex items-center mt-20">
-                                <div class="flex-center bg-blue-1 rounded-4 size-30 text-12 fw-600 text-white">4.8</div>
-                                <div class="text-14 text-dark-1 fw-500 ml-10">Exceptional</div>
-                                <div class="text-14 text-light-1 ml-10">3,014 reviews</div>
-                            </div>
-
-                            <div class="mt-5">
-                                <div class="fw-500">
-                                    Starting from <span class="text-blue-1">US$72</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
         </div>
         
     </div>

@@ -3,6 +3,10 @@ Project PWD - /home/ubuntu/project/hotel_listing
 ENV PWD - /home/ubuntu/project
 
 
+ssh - ssh -i "project-key-pair.pem" ubuntu@ec2-13-235-128-88.ap-south-1.compute.amazonaws.com
+IP - 13.235.128.88
+
+
 [Unit]
 Description=gunicorn daemon
 Requires=gunicorn.socket
@@ -28,12 +32,10 @@ WantedBy=multi-user.target
 
 server {
     listen 80;
-    server_name 13.234.119.48;
+    server_name 13.235.128.88;
 
     location = /favicon.ico { access_log off; log_not_found off; }
-    location /static/ {
-        root /home/ubuntu/project/hotel_listing;
-    }
+    
 
     location / {
         include proxy_params;

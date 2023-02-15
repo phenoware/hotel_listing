@@ -71,7 +71,7 @@ class RoomFeatures(models.Model):
 
 class Room(models.Model):
     id = models.AutoField(primary_key=True)
-    property = models.ForeignKey(Property, on_delete=models.CASCADE)
+    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='propertyRooms')
     
     addedDate = models.DateTimeField(auto_now_add=True)
     lastUpdate = models.DateTimeField(null=True, blank=True)
